@@ -26,7 +26,7 @@ app.use(limiter);
 
 // 기본 라우트
 app.get('/', (req, res) => {
-    res.send('Hello, the server is running without a database!');
+    res.send('Hello, the server is running!');
 });
 
 // 데이터 갱신 API
@@ -46,6 +46,9 @@ app.post('/api/game-data', (req, res) => {
         });
         return res.status(400).json({ message: 'Invalid data format' });
     }
+
+    //배열 길이 로깅
+    console.log(`Length of attentions array: ${attentions.length}`);
 
     // 메모리에 데이터 갱신
     currentData.attentions = attentions;
